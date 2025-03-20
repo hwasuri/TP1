@@ -211,12 +211,10 @@ div {
   25% {
     rotate: -3deg;
   }
-  50% {
-    color: red;
-  }
   75% {
     rotate: 4deg;
     scale: 1.5;
+    color: red;
   }
   100% {
     rotate: -1deg;
@@ -477,7 +475,6 @@ header {
 
 /* ======================================== Pour écrans à grandes tailles ======================================== */
 @media screen and (min-width: 992px) {
-
   /* changer la couleur car l'img dans picture a changé */
   body,
   #titre h1 {
@@ -510,7 +507,7 @@ header {
     scale: 1.2;
   }
 
- /* changer leur couleur pour un vert (comme de l'herbe) */
+  /* changer leur couleur pour un vert (comme de l'herbe) */
   #titre h1 {
     color: rgb(10, 54, 10);
     font-size: 3rem;
@@ -532,6 +529,14 @@ header {
     color: rgb(10, 54, 10);
     font-size: 3rem;
     margin: 0;
+  }
+
+  main p {
+    font-size: 1.5rem;
+  }
+
+  main h3 {
+    font-size: 2rem;
   }
 
   #introduction p {
