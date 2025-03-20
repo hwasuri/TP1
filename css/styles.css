@@ -1,0 +1,564 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* j'ai trouvé ce font similaire à la série sur dafont */
+@font-face {
+  font-family: "Honey Salt";
+  src: url("font/Honey Salt.otf") format("opentype");
+}
+
+body {
+  font-family: "Honey Salt";
+  background-color: rgb(248, 156, 172);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+}
+/* ======================================== Introduction ======================================== */
+/* animations */
+@keyframes bougerEpingles1 {
+  0% {
+    rotate: 0;
+    scale: 1;
+  }
+  30% {
+    scale: 1.2;
+  }
+  60% {
+    scale: 1;
+  }
+  90% {
+    scale: 1.2;
+  }
+  100% {
+    rotate: 360deg;
+    scale: 1;
+  }
+}
+
+@keyframes bougerEpingles2 {
+  0% {
+    rotate: 0;
+    scale: 1.2;
+  }
+  30% {
+    scale: 1;
+  }
+  60% {
+    scale: 1.2;
+  }
+  90% {
+    scale: 1;
+  }
+  100% {
+    rotate: -360deg;
+    scale: 1.2;
+  }
+}
+
+@keyframes bougerTitre {
+  0% {
+    scale: 2;
+    opacity: 0;
+  }
+  70% {
+    scale: 0.8;
+  }
+  90% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+#titre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+#titre h1 {
+  color: white;
+  background-color: rgb(248, 156, 172);
+  width: 100vw;
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* animation du titre */
+/* partie "chiikawa" */
+#titre h1:first-of-type {
+  animation: bougerTitre 1s forwards;
+  animation-timing-function: ease-in;
+}
+
+/* partie japonaise du titre */
+#titre h1:last-of-type {
+  opacity: 0;
+  animation: bougerTitre 0.6s forwards;
+  animation-timing-function: ease-in;
+  animation-delay: 1s;
+}
+
+picture img {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin: 0;
+  background-color: white;
+}
+
+#introduction {
+  margin: 3rem;
+  width: 80vw;
+  text-align: center;
+  border: 5px solid white;
+  border-radius: 30px;
+  background-color: rgb(209, 244, 209);
+}
+
+#introduction p {
+  margin: 1rem;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+/* pour changer seulement la dernière phrase "les personnages principaux" */
+#introduction p:last-of-type {
+  font-size: 1.6rem;
+}
+
+.ligne-epingles {
+  display: flex;
+  justify-content: space-around;
+
+  width: 40vw;
+  background-color: rgb(248, 156, 172);
+  margin: 2rem 0rem 1rem 0rem;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+.epingle {
+  width: 3rem;
+  margin: 0;
+}
+
+/* afin d'avoir une petite variation entre les épingles, j'ai fait 2 animations de sens contraires */
+.animation1 {
+  animation: bougerEpingles1 10s infinite;
+  animation-timing-function: linear;
+}
+
+.animation2 {
+  animation: bougerEpingles2 10s infinite;
+  animation-timing-function: linear;
+}
+
+.epingle-page {
+  margin: 1rem;
+  transition: scale 0.5s;
+}
+/* lorsqu'on met la souris sur une épingle, elle s'agrandit */
+.epingle-page:hover {
+  scale: 1.2;
+}
+
+/* ======================================== Personnages ======================================== */
+/* animations */
+/* les personnages ont des petits mouvements */
+@keyframes bougerPersonnagesPrincipaux {
+  0% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: -5deg;
+  }
+  50% {
+    scale: 1.05;
+  }
+  75% {
+    rotate: 5deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+/* pour donner un effet comique, les mots sortent de l'écran */
+@keyframes bougerMots {
+  0% {
+    rotate: 2deg;
+  }
+  25% {
+    rotate: -3deg;
+  }
+  50% {
+    color: red;
+  }
+  75% {
+    rotate: 4deg;
+    scale: 1.5;
+  }
+  100% {
+    rotate: -1deg;
+    scale: 1;
+  }
+}
+
+/* lorsque l'utilisateur scroll, les sections vont apparaître un par un */
+@keyframes venirDuBas {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* afin d'avoir un effet comique sur les mots avec "!" */
+.motACrier {
+  animation: bougerMots 1s infinite;
+  animation-timing-function: ease-out;
+  display: inline-block;
+  margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+/* principalement pour ajouter un espacement entre les paragraphes */
+main p {
+  margin: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* schémas de langage */
+main h3 {
+  margin: 2rem 0rem 0rem 0rem;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.personnage {
+  margin: 2rem;
+}
+
+/* règles générales de chaque section */
+#chiikawa,
+#hachiware,
+#usagi,
+#rakko,
+#momonga,
+#kurimanju {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2.5rem;
+  width: 100vw;
+}
+
+/* les background-color specifiques de chaque personnage */
+#chiikawa {
+  background-color: rgb(256, 172, 188);
+}
+
+#hachiware {
+  background-color: rgb(104, 204, 236);
+}
+
+#usagi {
+  background-color: rgb(248, 212, 100);
+}
+
+#rakko {
+  background-color: rgba(152, 162, 166);
+}
+
+#momonga {
+  background-color: rgba(214, 184, 217);
+}
+
+#kurimanju {
+  background-color: rgba(182, 215, 120);
+}
+
+/* lorsqu'un lien est cliqué */
+/* la couleur du texte devient blanc */
+main > section:target {
+  color: white;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* chaque png des personnages présentés ont cette classe */
+/* lorsqu'un lien est cliqué, le personnage bouge */
+main > section:target figure > .personnage {
+  animation: bougerPersonnagesPrincipaux 1s infinite alternate;
+  animation-timing-function: ease-in-out;
+}
+
+/* delai à chaque élément pour une transition plus fluide*/
+/* l'image du personnage elle-même */
+.section-personnage.active figure {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 0.1s;
+}
+
+/* premier paragraphe de description */
+.section-personnage.active p:first-of-type {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 0.3s;
+}
+
+/* deuxième paragraphe de description s'il y a lieu */
+.section-personnage.active p:nth-of-type(2) {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 0.5s;
+}
+
+/* schémas de langage */
+.section-personnage.active h3 {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 0.7s;
+}
+
+.section-personnage.active p:last-of-type {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 0.9s;
+}
+
+.section-personnage.active .epingle-page {
+  opacity: 0;
+  animation: venirDuBas 1s forwards;
+  animation-delay: 1.1s;
+}
+
+/* ======================================== Footer ======================================== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  width: 100vw;
+
+  font-size: 1.2rem;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
+
+  background-position: center;
+  background-size: cover;
+}
+
+footer img {
+  display: none;
+}
+/* ======================================== Nav ======================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 0.5rem;
+}
+
+.nav-principale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  z-index: 1;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  text-align: center;
+
+  translate: -100%;
+  transition: translate 0.5s;
+}
+
+.nav-principale a {
+  font-size: 1.4rem;
+  margin: 1.2rem 2rem 1.2rem 2rem;
+}
+
+/* pour cacher le "vrai" bouton */
+#boutonMenu {
+  display: none;
+}
+
+/* afin que le bouton burger reste en haut à gauche en tout temps */
+/* aussi la transition */
+.btn-menu {
+  position: sticky;
+  z-index: 2;
+  display: inline-block;
+
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+/* si la case est cochée */
+/* le bouton burger se tourne (animation) */
+#boutonMenu:checked + .btn-menu {
+  transform: rotate(90deg);
+}
+
+/* apparition du menu quand la case est cochée */
+#boutonMenu:checked ~ .nav-principale {
+  translate: initial;
+}
+
+/* ======================================== Pour écrans à tailles moyennes ======================================== */
+@media screen and (min-width: 576px) {
+  /* le menu est maintenant horizontal */
+  .nav-principale {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 4rem;
+    font-size: 1.4rem;
+    /* -105 au lieu de -100 pour enlever le box-shadow */
+    translate: -105vw;
+  }
+
+  /* je reduit l'espace entre les liens */
+  .nav-principale a {
+    margin: 0.5rem;
+  }
+
+  .epingle {
+    width: 5rem;
+    margin: 0;
+  }
+
+  div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ligne-epingles {
+    width: 50vw;
+    justify-content: space-around;
+  }
+}
+
+/* ======================================== Pour écrans à grandes tailles ======================================== */
+@media screen and (min-width: 992px) {
+
+  /* changer la couleur car l'img dans picture a changé */
+  body,
+  #titre h1 {
+    background-color: rgba(215, 248, 173);
+  }
+
+  /* cacher le bouton burger */
+  .btn-menu {
+    display: none;
+  }
+
+  /* le nouveau menu */
+  .nav-principale {
+    position: fixed;
+    top: 0;
+    height: 4rem;
+    margin: 0;
+
+    translate: initial;
+    font-size: 1.2rem;
+  }
+
+  /* ajouter plus d'espace entre les liens, plus un effet "hover" */
+  .nav-principale a {
+    margin: 2rem;
+    transition: scale 0.5s;
+  }
+
+  .nav-principale a:hover {
+    scale: 1.2;
+  }
+
+ /* changer leur couleur pour un vert (comme de l'herbe) */
+  #titre h1 {
+    color: rgb(10, 54, 10);
+    font-size: 3rem;
+  }
+
+  .ligne-epingles {
+    background-color: rgba(215, 248, 173);
+  }
+
+  /* j'enlève les épingles */
+  div {
+    display: none;
+  }
+
+  /* l'introduction n'a plus de bordure */
+  #introduction {
+    background-color: rgb(215, 248, 173);
+    border: none;
+    color: rgb(10, 54, 10);
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  #introduction p {
+    font-size: 2rem;
+  }
+
+  /* footer */
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    color: rgb(248, 156, 172);
+    text-shadow: none;
+    margin: 0;
+  }
+
+  /* refaire apparaître l'image du footer */
+  footer img {
+    display: block;
+    width: 20vw;
+  }
+
+  footer p {
+    text-align: left;
+    margin: 1rem;
+    font-size: 1.6rem;
+  }
+}
